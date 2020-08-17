@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import countriesList from './../countries.json';
 
 class CountryDetails extends Component {
@@ -57,7 +59,17 @@ class CountryDetails extends Component {
                   <td>
                     <ul>
                       {country.borders.map((border) => (
-                        <li key={border}>{border}</li>
+                        <li key={border}>
+                          <Link
+                            to={`/countries/${
+                              countriesList.find(
+                                (country) => border === country.cca3
+                              ).ccn3
+                            }`}
+                          >
+                            {border}
+                          </Link>
+                        </li>
                       ))}
                     </ul>
                   </td>
